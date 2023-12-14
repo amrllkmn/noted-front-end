@@ -7,9 +7,10 @@
 	}
 </script>
 
-<div class="grid grid-rows-[1fr_3fr_1fr]">
+<title>Noted</title>
+<div class="grid h-full grid-rows-[1fr_3fr_1fr]">
 	<div />
-	<div class="flex flex-col items-center justify-between gap-8">
+	<div class="flex h-full flex-col items-center justify-between gap-8">
 		<h1 class="font-lato text-gunmetal">NOTED.</h1>
 		<h2 class="font-lato text-paynes-gray">
 			The note editor with Markdown. Built on Axum and Svelte.
@@ -19,9 +20,7 @@
 			on:click={onClickHandler}>Try it out</button
 		>
 		<p class="font-lato text-baby-powder">
-			Check out the back-end repo <a class="underline" href="https://github.com/amrllkmn/noted"
-				>here</a
-			>.
+			Check out the <a class="underline" href="https://github.com/amrllkmn/noted">back-end repo</a>.
 		</p>
 	</div>
 	<div />
