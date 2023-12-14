@@ -49,6 +49,6 @@
 	p {
 		font-size: 18px;
 		letter-spacing: 0.03em;
-		font-weight: 200;
+		font-weight: 300;
 	}
 </style>
