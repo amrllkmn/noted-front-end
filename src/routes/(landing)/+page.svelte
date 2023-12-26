@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import Button from '$lib/components/Button.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 
 	async function onClickHandler() {
 		let result = await goto('/notes');
@@ -11,17 +13,24 @@
 	<div
 		class="grid h-full w-full grid-rows-[3fr_1fr_1fr_1fr] content-center justify-items-center gap-4"
 	>
-		<div class="text-text font-base leading-heading flex h-full items-center text-title font-bold">
-			Noted.
-		</div>
-		<div class="text-text font-base font-regular leading-text tracking-heading flex items-center">
-			<p>The note editor with Markdown. By devs, for devs.</p>
-		</div>
-		<button></button>
-		<div
-			class="text-text font-base leading-text tracking-heading text-small flex items-center font-light"
+		<Logo />
+		<p class="tracking-heading flex items-center font-base font-regular leading-text text-text">
+			The note editor with Markdown. By devs, for devs.
+		</p>
+
+		<Button text="Try it out" {onClickHandler} />
+
+		<p
+			class="tracking-heading flex items-center font-base text-small font-light leading-text text-text"
 		>
-			<p>Check out the repo here. Or, check out the challenge this app is based on.</p>
-		</div>
+			Check out&nbsp;<a
+				class="underline hover:font-regular"
+				href="https://github.com/amrllkmn/noted">the repo</a
+			>. Or, check out&nbsp;<a
+				class="underline hover:font-regular"
+				href="https://codingchallenges.substack.com/p/coding-challenge-35-google-keep"
+				>the challenge</a
+			>&nbsp;this app is based on.
+		</p>
 	</div>
 </div>

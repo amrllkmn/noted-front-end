@@ -3,5 +3,6 @@
 </script>
 
 <title>Noted</title>
-
-<slot />
+<main class="h-screen w-screen bg-background p-4">
+	<slot />
+</main>
