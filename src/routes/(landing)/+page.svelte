@@ -18,7 +18,7 @@
 			The note editor with Markdown. By devs, for devs.
 		</p>
 
-		<Button text="Try it out" {onClickHandler} />
+		<Button background="bg-primary" text="Try it out" {onClickHandler} style={null} />
 
 		<p
 			class="tracking-heading flex items-center font-base text-small font-light leading-text text-text"
