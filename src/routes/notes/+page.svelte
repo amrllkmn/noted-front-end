@@ -1,7 +1,42 @@
 <script>
+	import { onMount } from 'svelte';
+
 	export let data;
+
+	/** @type {HTMLDialogElement} */
+	let dialog;
+
+	onMount(() => {
+		// @ts-ignore
+		dialog = document.getElementById('create-new-modal');
+	});
+
+	/**
+	 * Adds a row to the bottom of the list
+	 */
+	function showDialog() {
+		if (dialog) {
+			dialog.showModal();
+		}
+	}
+
+	function hideDialog() {
+		if (dialog) {
+			dialog.close();
+		}
+	}
 </script>
 
+<dialog id="create-new-modal">
+	<form>
+		<label for="title"><h3>Create new note</h3></label>
+		<input placeholder="Title" name="title" required />
+		<div style="display: flex; justify-content:flex-end; gap:1rem;">
+			<button type="submit">Create new</button>
+			<button type="button" on:click={hideDialog}>Cancel</button>
+		</div>
+	</form>
+</dialog>
 <header>
 	<a href="/" class="logo">
 		<h1>Noted.</h1>
@@ -12,6 +47,7 @@
 	</form>
 </header>
 <div class="content">
+	<button on:click={showDialog}>Create new</button>
 	<div class="notes-list-title">
 		<h3>Title</h3>
 		<h3>Last Updated</h3>
@@ -106,5 +142,23 @@
 	form button {
 		width: 25%;
 		font-family: 'Space Grotesk';
+	}
+
+	dialog {
+		width: 35%;
+		height: 35%;
+		border: 0px;
+		border-radius: 8px;
+		padding: 1rem;
+	}
+
+	dialog form {
+		display: grid;
+		grid-template-rows: 1fr 1fr 1fr;
+		align-items: center;
+	}
+
+	dialog form input {
+		width: auto;
 	}
 </style>

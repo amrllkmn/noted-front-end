@@ -14,7 +14,7 @@
 		<a href="/notes"><p>Home</p></a>
 	</aside>
 	<div>
-		<h1>{data.note.title}</h1>
+		<input class="title-form" bind:value={data.note.title} />
 		<Tiptap content={data.note.content} />
 	</div>
 </div>
@@ -60,5 +60,16 @@
 	div.test {
 		display: grid;
 		grid-template-columns: 1fr 5fr;
+	}
+
+	input.title-form {
+		font-family: 'Space Grotesk';
+		font-weight: 700;
+		font-size: 2.986rem;
+		line-height: 2.986rem;
+		width: 100%;
+		margin-bottom: 1rem;
+		border: 0;
+		padding: 1rem;
 	}
 </style>
