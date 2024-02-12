@@ -46,8 +46,10 @@
 		<button type="submit"> Search </button>
 	</form>
 </header>
+<div class="button-row">
+	<button on:click={showDialog} class="create-new-button">Create new</button>
+</div>
 <div class="content">
-	<button on:click={showDialog}>Create new</button>
 	<div class="notes-list-title">
 		<h3>Title</h3>
 		<h3>Last Updated</h3>
@@ -139,9 +141,23 @@
 		font-weight: 400;
 	}
 
-	form button {
+	button {
 		width: 25%;
 		font-family: 'Space Grotesk';
+	}
+
+	button:hover {
+		font-weight: 700;
+	}
+
+	button.create-new-button {
+		width: 10%;
+		padding: 1rem;
+	}
+
+	div.button-row {
+		margin: 1rem;
+		padding: 0 1rem;
 	}
 
 	dialog {
