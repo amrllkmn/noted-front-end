@@ -1,7 +1,9 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
 
 	export let data;
+	export let form;
 
 	/** @type {HTMLDialogElement} */
 	let dialog;
@@ -28,7 +30,7 @@
 </script>
 
 <dialog id="create-new-modal">
-	<form>
+	<form method="post" action="?/create" on:submit={hideDialog} use:enhance>
 		<label for="title"><h3>Create new note</h3></label>
 		<input placeholder="Title" name="title" required />
 		<div style="display: flex; justify-content:flex-end; gap:1rem;">
@@ -46,6 +48,11 @@
 		<button type="submit"> Search </button>
 	</form>
 </header>
+{#if form?.error}
+	<div class="button-row">
+		<p class="error">{form.error}</p>
+	</div>
+{/if}
 <div class="button-row">
 	<button on:click={showDialog} class="create-new-button">Create new</button>
 </div>
@@ -176,5 +183,9 @@
 
 	dialog form input {
 		width: auto;
+	}
+
+	p.error {
+		color: red;
 	}
 </style>

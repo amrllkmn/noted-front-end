@@ -20,13 +20,6 @@
 </div>
 
 <style>
-	h1 {
-		font-family: 'Space Grotesk';
-		font-weight: 700;
-		font-size: 2.986rem;
-		line-height: 2.986rem;
-	}
-
 	h3 {
 		font-family: 'Space Grotesk';
 		font-weight: 700;
