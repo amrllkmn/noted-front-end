@@ -1,5 +1,5 @@
 <script>
-	import Tiptap from '$lib/Tiptap.svelte';
+	import NoteEditor from '$lib/NoteEditor.svelte';
 	export let data;
 </script>
 
@@ -13,10 +13,7 @@
 		</ul>
 		<a href="/notes"><p>Home</p></a>
 	</aside>
-	<div>
-		<input class="title-form" bind:value={data.note.title} />
-		<Tiptap content={data.note.content} />
-	</div>
+	<NoteEditor content={data.note.content} title={data.note.title} />
 </div>
 
 <style>
@@ -53,16 +50,5 @@
 	div.test {
 		display: grid;
 		grid-template-columns: 1fr 5fr;
-	}
-
-	input.title-form {
-		font-family: 'Space Grotesk';
-		font-weight: 700;
-		font-size: 2.986rem;
-		line-height: 2.986rem;
-		width: 100%;
-		margin-bottom: 1rem;
-		border: 0;
-		padding: 1rem;
 	}
 </style>

@@ -2,11 +2,17 @@
 	import { onMount, onDestroy, afterUpdate } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
+	import { enhance } from '$app/forms';
 
 	/**
 	 * @type {string}
 	 */
 	export let content;
+
+	/**
+	 * @type {string}
+	 */
+	export let title;
 
 	/**
 	 * @type {any}
@@ -17,13 +23,23 @@
 	 */
 	let editor;
 
+	/**
+	 * @type {HTMLTextAreaElement}
+	 */
+	let textarea;
+
 	onMount(() => {
+		title = title;
 		editor = new Editor({
 			element: element,
 			extensions: [StarterKit],
 			content: `<p>${content}</p>`,
 			onTransaction: () => {
 				editor = editor;
+				let newContent = editor.getHTML();
+				// @ts-ignore
+				textarea = document.getElementById('content');
+				textarea.value = newContent;
 			}
 		});
 	});
@@ -36,15 +52,34 @@
 
 	afterUpdate(() => {
 		if (editor) {
-			let newContent = `<p>${content}</p>`;
-			editor.commands.setContent(newContent);
+			editor.commands.setContent(content);
+			title = title;
 		}
 	});
 </script>
 
-<div bind:this={element} />
+<div>
+	<form method="post" action="?/update" use:enhance>
+		<label hidden for="title"></label>
+		<input class="title-form" bind:value={title} name="title" />
+		<div bind:this={element} />
+		<label hidden for="content"></label>
+		<textarea hidden name="content" id="content" />
+		<button type="submit"> Save</button>
+	</form>
+</div>
 
 <style>
+	input.title-form {
+		font-family: 'Space Grotesk';
+		font-weight: 700;
+		font-size: 2.986rem;
+		line-height: 2.986rem;
+		width: 100%;
+		margin-bottom: 1rem;
+		border: 0;
+		padding: 1rem;
+	}
 	:global(.tiptap p) {
 		font-family: 'Space Grotesk';
 		font-weight: 300;
