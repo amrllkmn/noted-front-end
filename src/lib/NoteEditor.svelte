@@ -144,4 +144,15 @@
 	:global(.tiptap) {
 		padding: 1rem;
 	}
+
+	button {
+		margin: 1rem 0;
+		padding: 1rem;
+		font-family: 'Space Grotesk';
+		font-weight: 400;
+	}
+
+	button:hover {
+		font-weight: 700;
+	}
 </style>
