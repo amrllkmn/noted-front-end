@@ -62,15 +62,16 @@
 		<h3>Last Updated</h3>
 		<div />
 	</div>
-	<div class="notes-list-items">
-		{#each data.notes as note}
+	{#each data.notes as note}
+		<form class="delete-note-form" method="post" action="?/delete" use:enhance>
 			<a href="/notes/{note.id}" class="notes-list-item">
 				<p>{note.title}</p>
 				<p>{note.lastUpdated}</p>
 			</a>
-			<button>Delete</button>
-		{/each}
-	</div>
+			<input hidden value={note.id} name="id" />
+			<button type="submit">Delete</button>
+		</form>
+	{/each}
 </div>
 
 <style>
@@ -111,12 +112,6 @@
 		align-items: center;
 		justify-items: start;
 	}
-	div.notes-list-items {
-		display: grid;
-		grid-template-columns: 4fr 1fr;
-		align-items: center;
-		justify-items: center;
-	}
 
 	a.notes-list-item {
 		display: grid;
@@ -125,6 +120,13 @@
 		width: 100%;
 		color: inherit;
 		text-decoration: none;
+	}
+
+	form.delete-note-form {
+		display: grid;
+		grid-template-columns: 4fr 1fr;
+		align-items: center;
+		justify-items: center;
 	}
 	a.notes-list-item:hover {
 		background-color: rgb(222, 222, 220);

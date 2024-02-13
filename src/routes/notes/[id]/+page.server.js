@@ -22,17 +22,12 @@ export const actions = {
 			body[key] = value;
 		});
 
-		const response = await fetch(`http://localhost:3000/api/v1/notes/${params.id}`, {
+		await fetch(`http://localhost:3000/api/v1/notes/${params.id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(body)
 		});
-
-		if (response.ok) {
-			const responseBody = await response.json();
-			console.log(responseBody);
-		}
 	}
 };

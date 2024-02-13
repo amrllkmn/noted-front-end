@@ -48,5 +48,13 @@ export const actions = {
 			responseBody = /** @type {ErrorResponse} */ (await response.json());
 			return fail(response.status, { error: responseBody.message });
 		}
+	},
+
+	delete: async ({ request }) => {
+		const data = await request.formData();
+		const id = data.get('id');
+		await fetch(`http://localhost:3000/api/v1/notes/${id}`, {
+			method: 'DELETE'
+		});
 	}
 };
