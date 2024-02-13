@@ -59,7 +59,15 @@
 </script>
 
 <div>
-	<form method="post" action="?/update" use:enhance>
+	<form
+		method="post"
+		action="?/update"
+		use:enhance={() => {
+			return async ({ update }) => {
+				update({ reset: false });
+			};
+		}}
+	>
 		<label hidden for="title"></label>
 		<input class="title-form" bind:value={title} name="title" />
 		<div bind:this={element} />
