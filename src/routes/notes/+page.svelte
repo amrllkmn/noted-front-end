@@ -60,13 +60,15 @@
 	<div class="notes-list-title">
 		<h3>Title</h3>
 		<h3>Last Updated</h3>
+		<div />
 	</div>
-	<div>
+	<div class="notes-list-items">
 		{#each data.notes as note}
 			<a href="/notes/{note.id}" class="notes-list-item">
 				<p>{note.title}</p>
 				<p>{note.lastUpdated}</p>
 			</a>
+			<button>Delete</button>
 		{/each}
 	</div>
 </div>
@@ -104,18 +106,26 @@
 	}
 
 	div.notes-list-title {
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 3fr 1fr 1fr;
 		align-items: center;
+		justify-items: start;
+	}
+	div.notes-list-items {
+		display: grid;
+		grid-template-columns: 4fr 1fr;
+		align-items: center;
+		justify-items: center;
 	}
 
 	a.notes-list-item {
-		display: flex;
-		justify-content: space-between;
-		text-decoration: none;
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		justify-items: start;
+		width: 100%;
 		color: inherit;
+		text-decoration: none;
 	}
-
 	a.notes-list-item:hover {
 		background-color: rgb(222, 222, 220);
 	}
@@ -124,7 +134,6 @@
 		font-weight: 400;
 		font-size: 1.05rem;
 	}
-
 	header {
 		display: flex;
 		justify-content: space-between;
