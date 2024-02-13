@@ -16,7 +16,6 @@ export const actions = {
 		// get form data
 		const data = await request.formData();
 		let responseBody;
-		console.log(data);
 
 		/**
 		 * @type {Object<string, FormDataEntryValue | string>}
@@ -30,8 +29,6 @@ export const actions = {
 		body.content = '';
 
 		const requestBody = JSON.stringify(body);
-
-		console.log(requestBody);
 
 		// submit form data to endpoint
 		const response = await fetch('http://localhost:3000/api/v1/notes', {
