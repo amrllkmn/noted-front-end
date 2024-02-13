@@ -1,5 +1,6 @@
 <script>
 	import NoteEditor from '$lib/NoteEditor.svelte';
+	import { page } from '$app/stores';
 	export let data;
 </script>
 
@@ -8,7 +9,9 @@
 		<h3>Notes</h3>
 		<ul>
 			{#each data.notes as note}
-				<li><a href={`/notes/${note.id}`}><p>{note.title}</p></a></li>
+				{#if note.id !== $page.params.id}
+					<li><a href={`/notes/${note.id}`}><p>{note.title}</p></a></li>
+				{/if}
 			{/each}
 		</ul>
 		<a href="/notes"><p>Home</p></a>
