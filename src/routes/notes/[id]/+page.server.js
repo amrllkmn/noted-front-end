@@ -1,5 +1,7 @@
+import { API_URL } from '$env/static/private';
+
 export async function load({ params }) {
-	const data = await fetch(`http://localhost:3000/api/v1/notes/${params.id}`);
+	const data = await fetch(`${API_URL}/${params.id}`);
 	const note = await data.json();
 	return {
 		note: {
@@ -22,7 +24,7 @@ export const actions = {
 			body[key] = value;
 		});
 
-		await fetch(`http://localhost:3000/api/v1/notes/${params.id}`, {
+		await fetch(`${API_URL}/${params.id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'

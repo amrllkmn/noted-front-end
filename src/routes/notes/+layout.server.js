@@ -7,9 +7,10 @@
  * @property {string} updated_at
  */
 import { getValidDate } from '$lib';
+import { API_URL } from '$env/static/private';
 
 export async function load() {
-	const data = await fetch('http://localhost:3000/api/v1/notes');
+	const data = await fetch(API_URL);
 	const notes = /** @type {Note[]} */ (await data.json());
 
 	return {
