@@ -1,4 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
+import { API_URL } from '$env/static/private';
 
 /**
  * @typedef {Object} Note
@@ -31,7 +32,7 @@ export const actions = {
 		const requestBody = JSON.stringify(body);
 
 		// submit form data to endpoint
-		const response = await fetch('http://localhost:3000/api/v1/notes', {
+		const response = await fetch(API_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ export const actions = {
 	delete: async ({ request }) => {
 		const data = await request.formData();
 		const id = data.get('id');
-		await fetch(`http://localhost:3000/api/v1/notes/${id}`, {
+		await fetch(`${API_URL}/${id}`, {
 			method: 'DELETE'
 		});
 	}
