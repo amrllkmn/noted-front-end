@@ -38,6 +38,10 @@
 			content: `<p>${content}</p>`,
 			onTransaction: () => {
 				editor = editor;
+				let newContent = editor.getHTML();
+				// @ts-ignore
+				textarea = document.getElementById('content');
+				textarea.value = newContent;
 			},
 			onUpdate: () => {
 				let newContent = editor.getHTML();
@@ -56,7 +60,8 @@
 
 	afterUpdate(() => {
 		if (editor) {
-			editor.commands.setContent(content);
+			let newContent = editor.getHTML();
+			editor.commands.setContent(newContent);
 			title = title;
 		}
 	});
