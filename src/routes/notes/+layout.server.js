@@ -9,8 +9,15 @@
 import { getValidDate } from '$lib';
 import { API_URL } from '$env/static/private';
 
-export async function load() {
-	const data = await fetch(API_URL);
+export async function load({ url }) {
+	const { searchParams } = url;
+	const searchTerm = searchParams.get('search');
+	let data;
+	if (searchTerm) {
+		data = await fetch(`${API_URL}?search=${searchTerm}`);
+	} else {
+		data = await fetch(API_URL);
+	}
 	const notes = /** @type {Note[]} */ (await data.json());
 
 	return {

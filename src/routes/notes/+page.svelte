@@ -63,8 +63,8 @@
 	<a href="/" class="logo">
 		<h1>Noted.</h1>
 	</a>
-	<form class="search">
-		<input placeholder="Search for your notes..." required />
+	<form class="search" method="get" action="?/search">
+		<input placeholder="Search for your notes..." required name="search" />
 		<button type="submit"> Search </button>
 	</form>
 </header>
