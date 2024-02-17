@@ -7,6 +7,7 @@
 
 	/** @type {HTMLDialogElement} */
 	let dialog;
+	let creating = false;
 
 	onMount(() => {
 		// @ts-ignore
@@ -30,14 +31,30 @@
 </script>
 
 <dialog id="create-new-modal">
-	<form method="post" action="?/create" on:submit={hideDialog} use:enhance>
-		<label for="title"><h3>Create new note</h3></label>
-		<input placeholder="Title" name="title" required />
-		<div style="display: flex; justify-content:flex-end; gap:1rem;">
-			<button type="submit">Create new</button>
-			<button type="button" on:click={hideDialog}>Cancel</button>
+	{#if creating}
+		<div style="display: grid; align-items:center; justify-items:center;">
+			<h3>Creating your note...</h3>
 		</div>
-	</form>
+	{:else}
+		<form
+			method="post"
+			action="?/create"
+			use:enhance={() => {
+				creating = true;
+				return async ({ update }) => {
+					update();
+					creating = false;
+				};
+			}}
+		>
+			<label for="title"><h3>Create new note</h3></label>
+			<input placeholder="Title" name="title" required disabled={creating} />
+			<div style="display: flex; justify-content:flex-end; gap:1rem;">
+				<button type="submit">Create new</button>
+				<button type="button" on:click={hideDialog}>Cancel</button>
+			</div>
+		</form>
+	{/if}
 </dialog>
 <header>
 	<a href="/" class="logo">
@@ -92,6 +109,13 @@
 		font-weight: 700;
 		font-size: 2.488rem;
 		line-height: 2.488rem;
+	}
+
+	h3 {
+		font-family: 'Space Grotesk';
+		font-weight: 700;
+		font-size: 2.074rem;
+		line-height: 2.074rem;
 	}
 
 	p {
