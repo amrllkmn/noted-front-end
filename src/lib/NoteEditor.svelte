@@ -35,13 +35,9 @@
 		editor = new Editor({
 			element: element,
 			extensions: [StarterKit],
-			content: `<p>${content}</p>`,
+			content,
 			onTransaction: () => {
 				editor = editor;
-				let newContent = editor.getHTML();
-				// @ts-ignore
-				textarea = document.getElementById('content');
-				textarea.value = newContent;
 			},
 			onUpdate: () => {
 				let newContent = editor.getHTML();
@@ -60,8 +56,7 @@
 
 	afterUpdate(() => {
 		if (editor) {
-			let newContent = editor.getHTML();
-			editor.commands.setContent(newContent);
+			editor.commands.setContent(content);
 			title = title;
 		}
 	});
@@ -83,7 +78,7 @@
 		<input class="title-form" bind:value={title} name="title" />
 		<div bind:this={element} />
 		<label hidden for="content"></label>
-		<textarea hidden name="content" id="content" />
+		<textarea hidden name="content" id="content" bind:value={content} />
 		<button type="submit"> {saving ? 'Saving...' : 'Save'}</button>
 	</form>
 </div>
