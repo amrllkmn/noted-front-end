@@ -8,6 +8,8 @@
 	/** @type {HTMLDialogElement} */
 	let dialog;
 	let creating = false;
+	/** @type {string[]} */
+	let deleting = [];
 
 	onMount(() => {
 		// @ts-ignore
@@ -42,7 +44,7 @@
 			use:enhance={() => {
 				creating = true;
 				return async ({ update }) => {
-					update();
+					await update();
 					hideDialog();
 					creating = false;
 				};
@@ -80,8 +82,19 @@
 		<h2>Last Updated</h2>
 		<div />
 	</div>
-	{#each data.notes as note}
-		<form class="delete-note-form" method="post" action="?/delete" use:enhance>
+	{#each data.notes.filter((note) => !deleting.includes(note.id)) as note (note.id)}
+		<form
+			class="delete-note-form"
+			method="post"
+			action="?/delete"
+			use:enhance={() => {
+				deleting = [...deleting, note.id];
+				return async ({ update }) => {
+					await update();
+					deleting = deleting.filter((id) => id !== note.id);
+				};
+			}}
+		>
 			<a href="/notes/{note.id}" class="notes-list-item">
 				<p>{note.title}</p>
 				<p>{note.lastUpdated}</p>

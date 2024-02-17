@@ -10,7 +10,7 @@ import { goto } from '$app/navigation';
  *
  */
 export async function navigateToPage(route) {
-	await goto(route);
+	goto(route);
 }
 
 /**

@@ -74,7 +74,7 @@
 		use:enhance={() => {
 			saving = true;
 			return async ({ update }) => {
-				update({ reset: false });
+				await update({ reset: false });
 				saving = false;
 			};
 		}}
