@@ -43,6 +43,7 @@
 				creating = true;
 				return async ({ update }) => {
 					update();
+					hideDialog();
 					creating = false;
 				};
 			}}
