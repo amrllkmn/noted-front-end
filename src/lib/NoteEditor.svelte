@@ -4,6 +4,8 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import { enhance } from '$app/forms';
 
+	$: saved = false;
+
 	/**
 	 * @type {string}
 	 */
@@ -36,10 +38,13 @@
 			content: `<p>${content}</p>`,
 			onTransaction: () => {
 				editor = editor;
+			},
+			onUpdate: () => {
 				let newContent = editor.getHTML();
 				// @ts-ignore
 				textarea = document.getElementById('content');
 				textarea.value = newContent;
+				saved = false;
 			}
 		});
 	});
@@ -65,6 +70,7 @@
 		use:enhance={() => {
 			return async ({ update }) => {
 				update({ reset: false });
+				saved = true;
 			};
 		}}
 	>
@@ -73,7 +79,7 @@
 		<div bind:this={element} />
 		<label hidden for="content"></label>
 		<textarea hidden name="content" id="content" />
-		<button type="submit"> Save</button>
+		<button type="submit"> {saved ? 'Saved!' : 'Save'}</button>
 	</form>
 </div>
 
