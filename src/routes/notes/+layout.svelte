@@ -1,3 +1,4 @@
+<title>Noted.</title>
 <div class="main">
 	<slot />
 </div>

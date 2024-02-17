@@ -58,8 +58,8 @@
 </div>
 <div class="content">
 	<div class="notes-list-title">
-		<h3>Title</h3>
-		<h3>Last Updated</h3>
+		<h2>Title</h2>
+		<h2>Last Updated</h2>
 		<div />
 	</div>
 	{#each data.notes as note}
@@ -87,11 +87,11 @@
 		line-height: 2.986rem;
 	}
 
-	h3 {
+	h2 {
 		font-family: 'Space Grotesk';
 		font-weight: 700;
-		font-size: 2.074rem;
-		line-height: 2.074rem;
+		font-size: 2.488rem;
+		line-height: 2.488rem;
 	}
 
 	p {

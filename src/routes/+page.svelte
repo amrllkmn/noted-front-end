@@ -2,6 +2,7 @@
 	import { navigateToPage } from '$lib/index';
 </script>
 
+<title>Noted.</title>
 <div class="main">
 	<h1 class="title">Noted.</h1>
 	<button class="navigation" on:click={() => navigateToPage('/notes')}>Try it out</button>
