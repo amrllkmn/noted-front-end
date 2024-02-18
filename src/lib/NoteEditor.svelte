@@ -80,10 +80,21 @@
 		<label hidden for="content"></label>
 		<textarea hidden name="content" id="content" bind:value={content} />
 		<button type="submit"> {saving ? 'Saving...' : 'Save'}</button>
+		<p>
+			Use Markdown to write down your notes. Here's the <a
+				href="https://www.markdownguide.org/cheat-sheet/">cheat sheet</a
+			>.
+		</p>
 	</form>
 </div>
 
 <style>
+	p {
+		font-family: 'Space Grotesk';
+		font-weight: 300;
+		font-size: 1rem;
+		line-height: 1.8rem;
+	}
 	input.title-form {
 		font-family: 'Space Grotesk';
 		font-weight: 700;
