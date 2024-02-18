@@ -5,7 +5,7 @@
 <title>Noted.</title>
 <div class="main">
 	<h1 class="title">Noted.</h1>
-	<p>A note-taking app, with Markdown support.</p>
+	<p>A note-taking app, with (some) Markdown support.</p>
 	<button class="navigation" on:click={() => navigateToPage('/notes')}>Try it out</button>
 	<p class="small">
 		Check out <a href="https://github.com/amrllkmn/noted">the back-end repo</a>,
